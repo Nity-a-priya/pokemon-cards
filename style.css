@@ -19,20 +19,21 @@ td {
   overflow: scroll !important;
 }
 .card {
-  border: 1px solid;
+ 
   padding: 10px;
   width: 285px;
+  height: 530px;
   margin: 10px;
   margin-top: 20px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0);
+  box-shadow: 5px 5px 10px rgb(72, 72, 72);
   text-align: center;
+border-radius: 2%;
   position: relative;
  
 }
 
-.card:before{
+.card:hover .hide:before, .show:before{
     content: ' ';
-   
     position: absolute;
     left: 0;
     top: 0;
@@ -50,17 +51,65 @@ td {
     background-size: cover;
     background-color: rgb(204, 234, 246);
 }
+.hide{
+  display: none;
+}
+.card:hover .hide{
+  display: inline;
+  align-content: center;
+  
+}
+.card:hover .show {
+  display: none;
+
+}
+.card:hover img{
+  width: 150px;
+  height: 150px;
+  margin: 0;
+}
+
+
+img{
+  width: 250px;
+  height : 250px;
+  margin-top: 25%;
+}
+.circle {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: var(--color);
+  margin: 20px;
+}
 
 .row {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  position: absolute;
+
+  
 }
+
 h3 {
-  margin: 0;
+ 
   text-shadow: 2px 2px 4px #f4ebeb;
 }
-p {
+.description {
   font-size: small;
   font-weight: bold;
+  text-align: justify;
+  overflow: auto;
+  height: 80px;
+
+
+}
+.inner-row{
+  display: flex;
+    align-items: flex-start;
+    margin-left: 75px;
+    
+}
+.text{
+  display: inline;
+  font-size: 15px;
 }
