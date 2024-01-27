@@ -59,7 +59,7 @@ const LOOKUP_OBJECT = {
   Fire: "red",
   Water: "blue",
   Poison: "maroon",
-  Flying: "aquamarine",
+  Flying: "#046ab3",
   Bug: "purple",
   Normal: "black",
   Electric: "yellow",

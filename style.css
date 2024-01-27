@@ -9,7 +9,8 @@
   border: 1px solid;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 280px;
+  width: 260px;
+  margin-left: 5%;
 }
 th,
 td {
@@ -27,8 +28,10 @@ td {
   margin-top: 20px;
   box-shadow: 5px 5px 10px rgb(72, 72, 72);
   text-align: center;
-border-radius: 2%;
+border-radius: 5%;
   position: relative;
+  transition: transform .5s;
+  background: linear-gradient(to top, rgba(255,0,0,0), rgb(33, 86, 101));
  
 }
 
@@ -49,7 +52,7 @@ border-radius: 2%;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;
-    background-color: rgb(204, 234, 246);
+   
 }
 .hide{
   display: none;
@@ -59,6 +62,10 @@ border-radius: 2%;
   align-content: center;
   
 }
+.card:hover {
+  transform: scale(1.07);
+}
+
 .card:hover .show {
   display: none;
 
@@ -80,7 +87,7 @@ img{
   width: 10px;
   border-radius: 50%;
   background-color: var(--color);
-  margin: 20px;
+  margin: 23px;
 }
 
 .row {
@@ -92,7 +99,7 @@ img{
 
 h3 {
  
-  text-shadow: 2px 2px 4px #f4ebeb;
+  text-shadow: 2px 2px 4px #8aafc9;
 }
 .description {
   font-size: small;
@@ -100,7 +107,8 @@ h3 {
   text-align: justify;
   overflow: auto;
   height: 80px;
-
+width: 90%;
+margin-left: 5%;
 
 }
 .inner-row{
@@ -111,5 +119,5 @@ h3 {
 }
 .text{
   display: inline;
-  font-size: 15px;
+  font-size: 17px;
 }
