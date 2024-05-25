@@ -1,16 +1,20 @@
+let DATA = [];
+
 const card = async () => {
-  const data = await fetchJson();
+  await fetchJson();
+  const data = DATA;
 
   parent = document.querySelector(".row");
   createChild(data);
 };
 
 const fetchJson = async () => {
-  const data = await fetch("pokemonData.json");
+  const data = await fetch("/data");
   const json = await data.json();
-  return json;
+
+  DATA = json;
 };
-//['Grass', 'Poison', 'Fire', 'Flying', 'Water', 'Bug', 'Normal', 'Electric', 'Ground', 'Fighting', 'Psychic', 'Rock', 'Ice', 'Ghost', 'Dragon']
+
 const createChild = (data) => {
   const typesArray = [];
   for (obj of data) {
@@ -33,17 +37,41 @@ const createChild = (data) => {
     const hide = createElement("div");
     hide.className = "hide";
     child.appendChild(hide);
-    hide.innerHTML = giveImg(obj.art_url) + giveDescription(obj.description) + getTable.outerHTML ;
+    hide.innerHTML =
+      giveImg(obj.art_url) +
+      giveDescription(obj.description) +
+      getTable.outerHTML;
     hide.style.setProperty("--background", `url('${obj.img}')`);
-   
   }
-  
+};
+
+const changeDisplayStyle = (array, displayValue) => {
+  array.forEach((element) => {
+    element.style.display = displayValue;
+  });
+};
+
+const search = async () => {
+  const input = document.getElementById("myInput");
+  const entertedValue = input.value.toLowerCase();
+  const cards = [...document.querySelectorAll(".card")];
+
+  const apiurl = "/search?value=" + entertedValue;
+  const url = await fetch(apiurl);
+  const filteredCardNames = await url.json();
+
+  const filteredCards = cards.filter((card) =>
+    filteredCardNames.includes(card.getElementsByTagName("h3")[0].textContent)
+  );
+
+  changeDisplayStyle(cards, "none");
+  changeDisplayStyle(filteredCards, "");
 };
 
 const createElement = (ele) => {
   return document.createElement(ele);
 };
-const giveImg =(img) => {
+const giveImg = (img) => {
   const image = createElement("img");
   image.src = img;
   return image.outerHTML;
@@ -83,9 +111,7 @@ const giveType = (type) => {
     cir.className = "inner-row";
     circle = createElement("div");
     circle.className = "circle";
-    console.log(t);
-    bgColor=LOOKUP_OBJECT[t];
-    console.log(bgColor);
+    bgColor = LOOKUP_OBJECT[t];
     circle.style.setProperty("--color", bgColor);
     cir.appendChild(circle);
     text = createElement("p");
